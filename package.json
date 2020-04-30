@@ -13,12 +13,21 @@
     "verify-tests": "jest --coverage",
     "build-webpack": "webpack -p",
     "build-node": "babel lib -d build --copy-files",
-    "start-prod": "NODE_ENV=production NODE_PATH=./build pm2 start build/server.js -i max --name appProd"
+    "start-prod": "NODE_ENV=production NODE_PATH=./build pm2 start build/server.js -i max --name appProd",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "babel": {
     "presets": [
       "react",
-      ["env", { "targets": { "node": "current" } }]
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
     ],
     "plugins": [
       "transform-class-properties",
@@ -50,6 +59,8 @@
     "react": "^15.6.1",
     "react-addons-perf": "^15.4.2",
     "react-dom": "^15.6.1",
-    "webpack": "^3.0.0"
-  }
+    "webpack": "^3.0.0",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
